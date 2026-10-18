@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="hi">
+  <head>
+    <meta charset="utf-8">
+    <title>SGChhathpooja</title>
+    <script>
+      // Single Page App redirect for GitHub Pages
+      // Re-routes deep URLs back to index.html with appropriate search parameter
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body style="background-color: #FFFDF9; font-family: sans-serif; text-align: center; padding: 3rem; color: #33251D;">
+    <h2>जय छठी मैया — SGChhathpooja</h2>
+    <p>लोड हो रहा है... / Loading...</p>
+  </body>
+</html>

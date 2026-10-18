@@ -79,7 +79,10 @@ export const VillageIntro: React.FC<VillageIntroProps> = ({ currentLang }) => {
     if (isPaused) return;
 
     // Check for prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion =
+      typeof window !== 'undefined' && typeof window.matchMedia === 'function'
+        ? window.matchMedia('(prefers-reduced-motion: reduce)')?.matches ?? false
+        : false;
     if (prefersReducedMotion) return;
 
     const timer = setInterval(() => {
