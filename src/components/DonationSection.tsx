@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Copy, Check, AlertTriangle, MessageSquare, ShieldAlert, ExternalLink } from 'lucide-react';
 import { Language, translations } from '../translations';
 import { siteConfig } from '../site-config';
+import { resolveAssetUrl } from '../utils/assets';
 
 interface DonationSectionProps {
   currentLang: Language;
@@ -77,7 +78,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ currentLang })
               {/* 1. QR Code */}
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-xl overflow-hidden bg-amber-50 border-2 border-dashed border-[#F57C00]/40 p-2 flex items-center justify-center">
                 <img
-                  src="./assets/images/demo-qr.svg"
+                  src={resolveAssetUrl(donation.qrImagePath || 'assets/images/demo-qr.svg')}
                   alt="Demo UPI QR Code - Not for real payment"
                   className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"

@@ -4,10 +4,30 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
-  // Automatically detects repository name when built in GitHub Actions (e.g. /<repo-name>/)
-  // or falls back to relative './' for local builds and custom domain deployments
-  const repoName = process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` : undefined;
-  const base = process.env.VITE_BASE || repoName || './';
+  // Respect VITE_BASE if explicitly passed (e.g. from GitHub Actions configure-pages),
+  // otherwise auto-detect repo name from GITHUB_REPOSITORY (e.g. /<repo-name>/),
+  // with special handling for *.github.io root user pages and fallback to relative './'.
+  let base = process.env.VITE_BASE;
+  if (!base && process.env.GITHUB_REPOSITORY) {
+    const rawRepo = process.env.GITHUB_REPOSITORY.split('/')[1] || '';
+    if (rawRepo.toLowerCase().endsWith('.github.io')) {
+      base = '/';
+    } else if (rawRepo) {
+      base = `/${rawRepo}/`;
+    }
+  }
+
+  // Format base correctly: ensure trailing slash if absolute, or fallback to relative './'
+  if (base && base !== './') {
+    if (!base.endsWith('/')) {
+      base = `${base}/`;
+    }
+    if (!base.startsWith('/') && !base.startsWith('.')) {
+      base = `/${base}`;
+    }
+  } else {
+    base = './';
+  }
 
   return {
     base,

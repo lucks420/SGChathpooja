@@ -9,20 +9,11 @@ import {
   HolyDiyaIcon,
 } from './FestiveVisuals';
 
+import { resolveAssetUrl } from '../utils/assets';
+
 interface VillageIntroProps {
   currentLang: Language;
 }
-
-// Robust asset URL resolver for local dev and GitHub Pages deployment
-const resolveAssetUrl = (path: string): string => {
-  if (!path) return '';
-  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
-    return path;
-  }
-  const cleanPath = path.replace(/^\/+/, '');
-  const base = import.meta.env.BASE_URL || './';
-  return base.endsWith('/') ? `${base}${cleanPath}` : `${base}/${cleanPath}`;
-};
 
 // Auto-discovers uploaded image candidates across gallery folder and root images folder
 const getSlideCandidates = (slideIndex: number, originalUrl?: string): string[] => {

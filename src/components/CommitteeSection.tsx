@@ -34,18 +34,7 @@ const getCandidatePaths = (memberId: string, photoUrl?: string): string[] => {
   return candidates;
 };
 
-/**
- * Robust asset URL resolver compatible with both local development and GitHub Pages subpaths.
- */
-const resolveAssetUrl = (path: string): string => {
-  if (!path) return '';
-  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
-    return path;
-  }
-  const cleanPath = path.replace(/^\/+/, '');
-  const base = import.meta.env.BASE_URL || './';
-  return base.endsWith('/') ? `${base}${cleanPath}` : `${base}/${cleanPath}`;
-};
+import { resolveAssetUrl } from '../utils/assets';
 
 export const CommitteeSection: React.FC<CommitteeSectionProps> = ({ currentLang }) => {
   const t = translations[currentLang];

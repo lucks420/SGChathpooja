@@ -8,16 +8,7 @@ interface FooterProps {
   currentLang: Language;
 }
 
-// Helper to resolve asset paths for both local dev and GitHub Pages subpaths
-const resolveAssetUrl = (path: string): string => {
-  if (!path) return '';
-  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
-    return path;
-  }
-  const cleanPath = path.replace(/^\/+/, '');
-  const base = import.meta.env.BASE_URL || './';
-  return base.endsWith('/') ? `${base}${cleanPath}` : `${base}/${cleanPath}`;
-};
+import { resolveAssetUrl } from '../utils/assets';
 
 const DEVELOPER_PHOTO_CANDIDATES = [
   'assets/images/committee/lucky.jpg',
