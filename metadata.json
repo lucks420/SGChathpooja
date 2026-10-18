@@ -1,0 +1,6 @@
+{
+  "name": "SGChathpooja - Sonwe Gonraha Chhath Puja",
+  "description": "सोनवे गोनरहा, पिपराईच, गोरखपुर की छठ पूजा वेबसाइट। पूजा कार्यक्रम, समिति की जानकारी, चंदा सहयोग और छठ पूजा के भक्तिमय गीत।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
