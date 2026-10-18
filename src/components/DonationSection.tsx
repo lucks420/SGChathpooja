@@ -120,7 +120,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ currentLang })
 
               {/* Google Pay (GPay) Intent Button directly below QR Code */}
               <a
-                href={`upi://pay?pa=${donation.upiId || 'yadav329337-1@okhdfcbank'}&pn=Rahul%20Yadav&cu=INR`}
+                href={`upi://pay?pa=${donation.upiId || 'yadav329337-1@okhdfcbank'}&cu=INR`}
                 className="w-full max-w-[288px] mt-3.5 inline-flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-xl bg-black hover:bg-neutral-800 text-white font-semibold text-sm transition-all shadow-xs hover:shadow-sm focus-visible:outline-2 focus-visible:outline-black cursor-pointer"
               >
                 <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
