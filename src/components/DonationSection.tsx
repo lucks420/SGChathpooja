@@ -118,8 +118,34 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ currentLang })
                 />
               </div>
 
+              {/* Google Pay (GPay) Intent Button directly below QR Code */}
+              <a
+                href={`upi://pay?pa=${donation.upiId || 'yadav329337-1@okhdfcbank'}&pn=Rahul%20Yadav&cu=INR`}
+                className="w-full max-w-[288px] mt-3.5 inline-flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-xl bg-black hover:bg-neutral-800 text-white font-semibold text-sm transition-all shadow-xs hover:shadow-sm focus-visible:outline-2 focus-visible:outline-black cursor-pointer"
+              >
+                <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M23.5 12.28c0-.85-.07-1.68-.21-2.48H12v4.69h6.45c-.28 1.48-1.12 2.73-2.38 3.57v2.96h3.85c2.25-2.07 3.58-5.12 3.58-8.74z"
+                    fill="#4285F4"
+                  />
+                  <path
+                    d="M12 24c3.24 0 5.96-1.07 7.95-2.91l-3.85-2.96c-1.08.72-2.45 1.16-4.1 1.16-3.15 0-5.82-2.13-6.77-5H1.24v3.06C3.26 21.36 7.34 24 12 24z"
+                    fill="#34A853"
+                  />
+                  <path
+                    d="M5.23 14.29A7.18 7.18 0 0 1 4.86 12c0-.8.13-1.57.37-2.29V6.65H1.24A11.96 11.96 0 0 0 0 12c0 1.93.46 3.75 1.24 5.35l3.99-3.06z"
+                    fill="#FBBC04"
+                  />
+                  <path
+                    d="M12 4.75c1.76 0 3.34.61 4.59 1.79l3.44-3.44C17.95 1.19 15.23 0 12 0 7.34 0 3.26 2.64 1.24 6.65l3.99 3.06c.95-2.87 3.62-5 6.77-5z"
+                    fill="#EA4335"
+                  />
+                </svg>
+                <span>Pay with Google Pay</span>
+              </a>
+
               {/* Account / UPI Identifiers: Only UPI ID & UPI Mobile Number */}
-              <div className="w-full mt-6 space-y-3.5 text-left">
+              <div className="w-full mt-5 space-y-3.5 text-left">
                 {/* 2. UPI ID */}
                 <div className="bg-[#FFF8E7] border border-[#FFC107]/50 rounded-xl p-3.5 flex items-center justify-between gap-3">
                   <div className="min-w-0">
