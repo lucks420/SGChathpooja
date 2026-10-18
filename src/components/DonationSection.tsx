@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Copy, Check, AlertTriangle, MessageSquare, ShieldAlert, ExternalLink } from 'lucide-react';
+import { Copy, Check, MessageSquare, ExternalLink } from 'lucide-react';
 import { Language, translations } from '../translations';
 import { siteConfig } from '../site-config';
 import { resolveAssetUrl } from '../utils/assets';
@@ -16,9 +16,37 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ currentLang })
   const t = translations[currentLang];
   const { donation } = siteConfig;
 
+  // Candidate paths to find qrcode.jpg across assets locations
+  const qrCandidates = [
+    donation.qrImagePath || 'assets/qrcode.jpg',
+    'assets/qrcode.jpg',
+    'assets/images/qrcode.jpg',
+    'assets/images/photo_2026-10-18_20-54-58-1.jpg',
+    'assets/images/rahul-yadav-qr.svg',
+  ];
+  const [candidateIdx, setCandidateIdx] = useState(0);
+
+  const handleQrError = () => {
+    if (candidateIdx < qrCandidates.length - 1) {
+      setCandidateIdx((prev) => prev + 1);
+    }
+  };
+
   const handleCopyUpi = () => {
     if (donation.upiId) {
-      navigator.clipboard.writeText(donation.upiId);
+      if (navigator?.clipboard?.writeText) {
+        navigator.clipboard.writeText(donation.upiId);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = donation.upiId;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
       setCopiedId(true);
       setTimeout(() => setCopiedId(false), 2500);
     }
@@ -26,7 +54,19 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ currentLang })
 
   const handleCopyMobile = () => {
     if (donation.upiMobileNumber) {
-      navigator.clipboard.writeText(donation.upiMobileNumber);
+      if (navigator?.clipboard?.writeText) {
+        navigator.clipboard.writeText(donation.upiMobileNumber);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = donation.upiMobileNumber;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
       setCopiedMobile(true);
       setTimeout(() => setCopiedMobile(false), 2500);
     }
@@ -62,24 +102,17 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ currentLang })
           </div>
         </div>
 
-        {/* Demo Notice Banner */}
-        <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-amber-50 border-2 border-amber-300 text-amber-950 flex items-start gap-3.5 shadow-xs max-w-4xl">
-          <AlertTriangle className="w-5 h-5 text-[#E65100] shrink-0 mt-0.5" />
-          <p className="text-xs sm:text-sm text-amber-900 leading-normal font-medium">
-            {t.demoNoticeText}
-          </p>
-        </div>
-
         {/* Main 2-Column Donation & Instructions Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Column: Donation Card with ONLY 3 Items (QR code, UPI ID, UPI mobile number) */}
           <div className="lg:col-span-5">
             <div className="bg-white rounded-2xl border border-stone-200/90 p-6 sm:p-8 shadow-sm flex flex-col items-center text-center">
-              {/* 1. QR Code */}
-              <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-xl overflow-hidden bg-amber-50 border-2 border-dashed border-[#F57C00]/40 p-2 flex items-center justify-center">
+              {/* 1. QR Code Image - Full visibility, contain, clear and scannable */}
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-xl overflow-hidden bg-white border-2 border-stone-200 p-2 flex items-center justify-center shadow-2xs">
                 <img
-                  src={resolveAssetUrl(donation.qrImagePath || 'assets/images/demo-qr.svg')}
-                  alt="Demo UPI QR Code - Not for real payment"
+                  src={resolveAssetUrl(qrCandidates[candidateIdx])}
+                  alt="UPI QR Code - Rahul Yadav"
+                  onError={handleQrError}
                   className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"
                 />
@@ -93,7 +126,7 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ currentLang })
                     <span className="text-[11px] font-semibold text-[#75665D] uppercase tracking-wider block">
                       {t.upiIdLabel}
                     </span>
-                    <span className="text-sm sm:text-base font-mono font-bold text-[#33251D] truncate block">
+                    <span className="text-sm sm:text-base font-mono font-bold text-[#33251D] truncate block select-all">
                       {donation.upiId}
                     </span>
                   </div>
@@ -123,9 +156,12 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ currentLang })
                     <span className="text-[11px] font-semibold text-[#75665D] uppercase tracking-wider block">
                       {t.upiNumberLabel}
                     </span>
-                    <span className="text-sm sm:text-base font-mono font-bold text-[#33251D] block">
+                    <a
+                      href={`tel:${donation.upiMobileNumber.replace(/\s+/g, '')}`}
+                      className="text-sm sm:text-base font-mono font-bold text-[#33251D] hover:text-[#E65100] block transition-colors"
+                    >
                       {donation.upiMobileNumber}
-                    </span>
+                    </a>
                   </div>
                   <button
                     type="button"
@@ -224,19 +260,6 @@ export const DonationSection: React.FC<DonationSectionProps> = ({ currentLang })
                     </button>
                   </div>
                 )}
-              </div>
-            </div>
-
-            {/* Static Website Disclaimer Notice */}
-            <div className="bg-[#FFFDF9] rounded-xl border border-stone-200 p-5 text-xs text-[#75665D] flex items-start gap-3">
-              <ShieldAlert className="w-5 h-5 text-stone-500 shrink-0 mt-0.5" />
-              <div>
-                <span className="font-bold text-[#33251D] block mb-1">
-                  {t.staticDisclaimerTitle}
-                </span>
-                <p className="leading-relaxed">
-                  {t.staticDisclaimerText}
-                </p>
               </div>
             </div>
           </div>

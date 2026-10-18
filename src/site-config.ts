@@ -95,9 +95,8 @@ export interface SiteConfig {
     googleMapsUrl: string;
   };
   donation: {
-    upiId: string; // DEMO_UPI_ID
-    upiMobileNumber: string; // DEMO_MOBILE_NUMBER
-    isDemoOnly: boolean;
+    upiId: string;
+    upiMobileNumber: string;
     whatsappGroupUrl: string;
     qrImagePath: string;
   };
@@ -134,11 +133,10 @@ export const siteConfig: SiteConfig = {
     googleMapsUrl: '', // Leave empty until real location pin is confirmed
   },
   donation: {
-    upiId: 'DEMO_UPI_ID',
-    upiMobileNumber: 'DEMO_MOBILE_NUMBER',
-    isDemoOnly: true,
+    upiId: 'yadav329337-1@okhdfcbank',
+    upiMobileNumber: '+91 93698 59309',
     whatsappGroupUrl: 'https://chat.whatsapp.com/CNM1IEd2HydH3UyCEcnbSe?s=cl&p=a&mlu=4&ilr=4',
-    qrImagePath: 'assets/images/demo-qr.svg',
+    qrImagePath: 'assets/qrcode.jpg',
   },
   // All committee members have equal status — no titles or hierarchy
   committeeMembers: [

@@ -53,7 +53,6 @@ export interface Translations {
   donationSectionTitle: string;
   donationSectionSubtitle: string;
   donationParagraph: string;
-  demoNoticeText: string;
   upiIdLabel: string;
   upiNumberLabel: string;
   copyUpi: string;
@@ -162,21 +161,19 @@ export const translations: Record<Language, Translations> = {
     donationSectionSubtitle: 'घाट सज्जा, प्रकाश व्यवस्था और स्वच्छता में अपना योगदान दें',
     donationParagraph:
       'छठी मईया के इस पावन पर्व के आयोजन में अपनी श्रद्धानुसार सहयोग करें। आप ₹51, ₹101, ₹501 या ₹1001 का सहयोग दे सकते हैं। जो जितना और जिस तरह से सहयोग कर सके, उसका स्वागत है। आपका छोटा-बड़ा हर सहयोग हमारे गाँव में छठ पूजा की बेहतर व्यवस्था करने में मदद करता है। जय छठी मईया!',
-    demoNoticeText:
-      'डेमो विवरण — वास्तविक भुगतान के लिए समिति का सही QR कोड और UPI विवरण अपडेट किया जाएगा।',
     upiIdLabel: 'UPI ID',
     upiNumberLabel: 'UPI मोबाइल नंबर',
     copyUpi: 'कॉपी करें',
     copied: 'कॉपी हो गया!',
     paymentInstructionsTitle: 'सहयोग एवं भुगतान चरण',
-    step1: '1. समिति का वास्तविक QR कोड स्कैन करें या प्रदर्शित UPI विवरण का उपयोग करें।',
+    step1: '1. समिति का QR कोड स्कैन करें या प्रदर्शित UPI विवरण का उपयोग करें।',
     step2: '2. अपने UPI ऐप में भुगतान पूरा करें।',
     step3: '3. पुष्टि करें कि लेन-देन (ट्रांजैक्शन) सफल हो गया है।',
     step4: '4. सफल भुगतान का स्क्रीनशॉट लें।',
     step5: '5. स्क्रीनशॉट को आधिकारिक छठ पूजा WhatsApp ग्रुप में साझा करें।',
     step6: '6. आवश्यकतानुसार आयोजन समिति से पुष्टि प्राप्त होने की प्रतीक्षा करें।',
     whatsappGroupBtn: 'WhatsApp ग्रुप में स्क्रीनशॉट भेजें',
-    whatsappPlaceholderNote: 'व्हाट्सएप ग्रुप लिंक: समिति द्वारा वास्तविक लिंक जोड़े जाने तक यह केवल डेमो है।',
+    whatsappPlaceholderNote: 'व्हाट्सएप ग्रुप लिंक: समिति के आधिकारिक ग्रुप से सीधे जुड़ें।',
     staticDisclaimerTitle: 'महत्वपूर्ण सूचना',
     staticDisclaimerText:
       'यह एक स्थिर (Static) वेबसाइट है। यह वेबसाइट किसी भी प्रकार का भुगतान प्रोसेस या सत्यापित नहीं करती है। सभी भुगतान बाहरी UPI ऐप के माध्यम से सीधे समिति खाते में होते हैं।',
@@ -271,21 +268,19 @@ export const translations: Record<Language, Translations> = {
     donationSectionSubtitle: 'Contribute towards ghat preparation, lighting, and cleanliness',
     donationParagraph:
       'Support our village\'s Chhath Puja celebration with a contribution of your choice. You may contribute ₹51, ₹101, ₹501, or ₹1001, or give whatever amount you can comfortably afford. Every contribution helps our community organize the celebration. Jai Chhathi Maiya!',
-    demoNoticeText:
-      'Demo details — The committee\'s actual QR code and UPI details must be added before accepting payments.',
     upiIdLabel: 'UPI ID',
     upiNumberLabel: 'UPI Mobile Number',
     copyUpi: 'Copy',
     copied: 'Copied!',
     paymentInstructionsTitle: 'Contribution & Payment Steps',
-    step1: '1. Scan the committee\'s actual QR code or use the displayed UPI details.',
+    step1: '1. Scan the committee\'s QR code or use the displayed UPI details.',
     step2: '2. Complete the payment in the visitor\'s UPI app.',
     step3: '3. Confirm that the transaction succeeded.',
     step4: '4. Take a screenshot of the successful payment.',
     step5: '5. Share the screenshot in the official Chhath Puja WhatsApp group.',
     step6: '6. Wait for confirmation from the organizing committee if required.',
     whatsappGroupBtn: 'Share Screenshot on WhatsApp',
-    whatsappPlaceholderNote: 'WhatsApp Group Link: This is a placeholder until the real committee link is provided.',
+    whatsappPlaceholderNote: 'WhatsApp Group Link: Connect directly to the official committee group.',
     staticDisclaimerTitle: 'Important Notice',
     staticDisclaimerText:
       'This is a static informational website. It does not process or verify payments online. All transactions occur via external UPI apps directly to the committee account.',
