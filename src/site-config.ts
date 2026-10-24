@@ -266,6 +266,24 @@ export const siteConfig: SiteConfig = {
       instagramUrl: 'https://www.instagram.com/yadav_ahir3531/',
       isPlaceholder: false,
     },
+    {
+      id: 'member-shivam',
+      nameHi: 'शिवम यादव',
+      nameEn: 'Shivam Yadav',
+      photoUrl: 'assets/shivam.jpg',
+      instagramUsername: 'shivam.yadav9335',
+      instagramUrl: 'https://www.instagram.com/shivam.yadav9335/',
+      isPlaceholder: false,
+    },
+    {
+      id: 'member-nitin',
+      nameHi: 'नितिन शर्मा',
+      nameEn: 'Nitin Sharma',
+      photoUrl: 'assets/nitin.jpg',
+      instagramUsername: 'nitin273152',
+      instagramUrl: 'https://www.instagram.com/nitin273152/',
+      isPlaceholder: false,
+    },
   ],
   // EXACT TWO-DAY SCHEDULE AS REQUESTED
   festivalSchedule: [
